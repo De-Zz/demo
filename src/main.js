@@ -14,9 +14,17 @@ Vue.use(ElementUI)
 
 //引入axios
 import axios from 'axios'
+// import { config } from 'vue/types/umd'
+import VueAxios from 'vue-axios'
+Vue.use(VueAxios, axios)
 //配置请求的根路径
 axios.defaults.baseURL='http://127.0.0.1:8888/api/private/v1/'
-Vue.prototype.$http = axios
+//请求头拦截
+axios.interceptors.request.use(config=>{
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  return config
+})
+// Vue.prototype.$http = axios
 // import VueAxios from 'vue-axios'
 
 // Vue.use(VueAxios, axios)

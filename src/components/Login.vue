@@ -86,7 +86,7 @@ export default {
         // console.log(valid);
         if (!valid) return;
         const { data: res } = await this.$http.post("login", this.form);
-        console.log(res);
+        // console.log(res);
         if (res.meta.status !== 200) {
           return this.$message({
             type:'error',
